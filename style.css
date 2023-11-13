@@ -1,0 +1,21 @@
+body {
+  font-family:serif;
+}
+.father {
+  display:flex;
+  height: 100vh;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: tomato;
+  color:white;
+  font-size:35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
