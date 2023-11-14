@@ -4,10 +4,9 @@ body {
 .father {
   display:flex;
   height: 100vh;
-  flex-direction: column;
   gap: 10px;
-  justify-content: space-around;
-  align-items: flex-end;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 .box {
   width: 200px;
