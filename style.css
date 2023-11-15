@@ -1,6 +1,6 @@
 .father {
   display: grid;
-  grid-template-columns: 100px 200px 50px;
+  grid-template-columns:[first-clmn] 100px [sec-clmn] 200px [third-clmn] 50px [fourth-clmn];
   grid-template-rows: 200px 100px;
   row-gap: 10px;
   column-gap: 20px;
