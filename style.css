@@ -4,9 +4,12 @@ body {
 .father {
   display:flex;
   height: 100vh;
-  gap: 10px;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 20px;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 .box {
   width: 200px;
