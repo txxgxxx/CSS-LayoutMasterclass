@@ -9,7 +9,6 @@ body {
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  align-content: center;
 }
 .box {
   width: 200px;
@@ -20,4 +19,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.box:first-child {
+  align-self: flex-start;
+}
+
+.box:last-child {
+  align-self: flex-end;
+  order:-1;
 }
