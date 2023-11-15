@@ -14,3 +14,14 @@
   align-items: center;
   justify-content: center;
 }
+
+.child:first-child {
+  grid-row-start: 1;
+  grid-row-end: -1;
+}
+
+.child:last-child {
+  background-color: aqua;
+  grid-column-start: 2;
+  grid-column-end: -1;
+}
