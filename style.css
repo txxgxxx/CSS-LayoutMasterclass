@@ -6,10 +6,11 @@ body {
   height: 100vh;
   flex-flow: row nowrap;
   justify-content: center;
+  flex-direction: column;
 }
 
 .box {
-  height: 200px;
+  height: 400px;
   color:white;
   font-size:35px;
   display: flex;
@@ -19,18 +20,11 @@ body {
 
 .box:first-child {
   background-color: tomato;
-  flex-grow: 1;
-  flex-shrink: 12;
+  flex: 1 0 300px;
 }
 
-.box:nth-child(2) {
-  background-color: orange;
-  flex-grow: 2;
-  flex-shrink: 0;
-}
 
 .box:last-child {
   background-color: teal;
   flex-grow: 1;
-  flex-shrink: 1;
 }
