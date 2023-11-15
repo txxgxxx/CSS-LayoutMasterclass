@@ -4,16 +4,12 @@ body {
 .father {
   display:flex;
   height: 100vh;
-  row-gap: 10px;
-  column-gap: 20px;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: center;
-  align-items: center;
 }
+
 .box {
-  width: 200px;
   height: 200px;
-  background-color: tomato;
   color:white;
   font-size:35px;
   display: flex;
@@ -22,10 +18,19 @@ body {
 }
 
 .box:first-child {
-  align-self: flex-start;
+  background-color: tomato;
+  flex-grow: 1;
+  flex-shrink: 12;
+}
+
+.box:nth-child(2) {
+  background-color: orange;
+  flex-grow: 2;
+  flex-shrink: 0;
 }
 
 .box:last-child {
-  align-self: flex-end;
-  order:-1;
+  background-color: teal;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
