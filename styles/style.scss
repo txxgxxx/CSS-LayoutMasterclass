@@ -1,130 +1,227 @@
 @import "./reset.scss";
 
-$borderColor: #929292;
-$borderWidth: 2px;
+* {
+  box-sizing: border-box;
+}
+
 body {
+  width: 100%;
   height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr 10fr;
-  border: $borderWidth solid black;
+  padding: 15px;
 }
-
-.header {
-  .header__nav {
-    ul {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr) 1.5fr repeat(5, 1fr);
-      background-color: $borderColor;
-      gap: $borderWidth;
-      .header__tab {
-        padding: 30px 0px;
-        background-color: white;
-
-        text-align: center;
-        font-weight: 300;
-        font-size: 14px;
-        &:nth-child(6) {
-          text-transform: uppercase;
-          font-weight: bold;
-          font-size: 22px;
-        }
-      }
-    }
-  }
-  .header__breadcrumbs {
-    border-top: $borderWidth solid $borderColor;
-    border-bottom: $borderWidth solid $borderColor;
-    padding: 10px 0px;
-    padding-left: 50px;
-    font-size: 12px;
-    .header__crumb {
-      font-weight: 500;
-      &:last-child {
-        opacity: 0.5;
-      }
-    }
-  }
-}
-
-.product {
+main {
+  border: 3px solid black;
+  height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  background-color: $borderColor;
-  gap: $borderWidth;
-  .product__img {
-    background-image: url("https://source.unsplash.com/random");
-    background-size: cover;
-  }
-  .product__info {
-    gap: $borderWidth;
-    display: grid;
-    grid-template-rows: 1.5fr 1fr;
-    .product__header {
-      background-color: white;
-      display: flex;
-      gap: 20px;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0px 50px;
-      font-weight: 500;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 4fr 1fr;
+  .a1 {
+    grid-row: 1 / -1;
+    border-right: 3px solid black;
+    .title {
+      display: block;
+      margin: 10px;
+      font-size: 16px;
       text-transform: uppercase;
-      .product__category {
-        font-size: 18px;
-        opacity: 0.8;
-        font-weight: bold;
+    }
+    .info {
+      margin: 10px;
+      margin-top: 50px;
+      font-size: 35px;
+      font-weight: 300;
+    }
+    .category {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      text-transform: uppercase;
+      & span {
+        padding: 10px 15px;
+        border-top: 1px solid black;
+        font-size: 16px;
       }
-      .product__title {
-        font-size: 44px;
+      & span:last-child {
+        border-bottom: 1px solid black;
       }
-      .product__add-to-cart {
-        margin-top: 20px;
-        display: flex;
-        gap: 60px;
-        .product__qty {
-          font-size: 32px;
-          display: flex;
-          gap: 10px;
-          .product__minus {
-            opacity: 0.5;
-            font-weight: bold;
-          }
-          .product__plus {
-            font-weight: bold;
-          }
-        }
-        .product__price {
-          font-size: 32px;
-        }
+      & span:hover {
+        background-color: #eeeeee;
       }
     }
-    .product__footer {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: $borderWidth;
-      & > div {
-        background-color: white;
-      }
-      .product__description p {
-        width: 75%;
-        font-size: 15px;
-        padding: 30px 0;
-        margin: 0 auto;
-        opacity: 0.7;
-      }
-      .product__faq {
-        padding: 30px;
+    footer {
+      margin-top: 80px;
+      padding: 10px;
+      font-weight: 300;
+      font-size: 15px;
+      .num {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        .product__question {
-          border-bottom: $borderWidth solid $borderColor;
-          display: flex;
-          justify-content: space-between;
-          text-transform: uppercase;
+        margin-bottom: 25px;
+        & small {
+          margin-bottom: 10px;
+        }
+      }
+      .melbourne {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 25px;
+        .melbourne__title {
           font-weight: 600;
-          padding-bottom: 10px;
+          margin-bottom: 5px;
+        }
+        & small {
+          margin-bottom: 5px;
+        }
+      }
+      .sydney {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 25px;
+        .sydney__title {
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+        & small {
+          margin-bottom: 5px;
         }
       }
     }
   }
+  .home {
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    .title {
+      display: block;
+      margin: 10px;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    .info {
+      margin: 10px;
+      margin-top: 50px;
+      font-size: 35px;
+      font-weight: 300;
+    }
+    .explanation {
+      padding: 10px;
+      padding-right: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      line-height: 1.5;
+    }
+  }
+  .services {
+    grid-row: -2 / -1;
+    border-right: 3px solid black;
+    .title {
+      display: block;
+      margin: 10px;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    .info {
+      margin: 10px;
+      margin-top: 50px;
+      font-size: 35px;
+      font-weight: 300;
+    }
+  }
+  .photo__main {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+  }
+  .photo__sub {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 2fr repeat(2, 1fr);
+    border-bottom: 3px solid black;
+    row-gap: 3px;
+    background-color: black;
+    .first {
+      grid-column: 1 / -1;
+    }
+    .sec {
+      grid-column: 1 / 3;
+      border-right: 3px solid black;
+    }
+    .third-fourth {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-column: 3 / -1;
+      & div:first-child {
+        border-bottom: 3px solid black;
+      }
+    }
+    .fifth {
+      grid-column: 1 / 2;
+    }
+    .last {
+      grid-column: span 2;
+    }
+  }
+  .main__footer {
+    grid-column: 3 / -1;
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    background-color: black;
+    gap: 3px;
+    .mini-photo {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      background-color: black;
+      gap: 3px;
+      & div:first-child {
+        background-image: url("https://source.unsplash.com/random");
+        grid-row: 1 / -1;
+      }
+      & div:nth-child(2) {
+        background-image: url("https://cdn.dribbble.com/userupload/12103081/file/original-ac4552b76fbc22d3be7918b0c7b0e5ec.png?resize=1504x1128");
+        grid-row: 1 / 2;
+      }
+      & div:last-child {
+        background-image: url("https://cdn.dribbble.com/userupload/12102696/file/original-95091aed299f7c38ecf9db001e736f5d.png?resize=2048x1536");
+      }
+    }
+    .map {
+      background-image: url("https://cdn.dribbble.com/userupload/11421617/file/original-ad9b495d7d9040f33a90687cc6bfc58e.png?resize=1504x1128");
+    }
+  }
+}
+
+.photo__main,
+.photo__sub div,
+.mini-photo div,
+.map {
+  background-size: cover;
+  background-position: center;
+}
+.photo__main {
+  background-image: url("https://cdn.dribbble.com/userupload/11576080/file/original-870368abac73626d10b333c094d16b4f.png");
+}
+
+.first {
+  background-image: url("https://cdn.dribbble.com/users/528933/screenshots/3149770/media/d5dee92dcef472ba6a7e30092fce7e51.jpg");
+}
+
+.sec {
+  background-image: url("https://cdn.dribbble.com/users/2504021/screenshots/5924510/media/ca525383c34bab8c23f5c96fb85630c7.jpg");
+}
+
+.third-fourth div:first-child {
+  background-image: url("https://cdn.dribbble.com/users/275310/screenshots/4042271/media/d050a9712e329c7e3314741c8ab690ea.gif");
+}
+
+.third-fourth div:last-child {
+  background-image: url("https://cdn.dribbble.com/users/215472/screenshots/8812460/media/13a9c47f4e7643a26b93f2d23865dc23.jpg");
+}
+
+.fifth {
+  background-image: url("https://cdn.dribbble.com/userupload/11918451/file/original-1aa367c4a4cbd31e7419949233a208df.png");
+}
+
+.last {
+  background-image: url("https://cdn.dribbble.com/users/66135/screenshots/5740043/christmas_dribbble_invites_4x.jpg");
 }
