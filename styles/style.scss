@@ -1,118 +1,262 @@
 @import "./reset.scss";
 
-$bg: #f0f0f0;
-$accent: #c7c2cc;
-$borderWidth: 2px;
+$green: #01ff00;
+$grey: #d9d9d9;
+$lightGrey: #f0f0f0;
 
-@keyframes slide {
+@keyframes top-slide {
   0% {
-    transform: translateY(-3000%) rotateZ(90deg);
+    transform: translateX(-25%);
+  }
+  50% {
+    transform: translateX(0%);
   }
   100% {
-    transform: translateY(calc(0% - 80px)) rotateZ(90deg);
+    transform: translateX(-25%);
+  }
+}
+@keyframes bottom-slide {
+  0% {
+    transform: translateX(25%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+@keyframes left-slide {
+  0% {
+    transform: translateY(7000%) rotateZ(90deg);
+  }
+  50% {
+    transform: translateY(0%) rotateZ(90deg);
+  }
+  100% {
+    transform: translateY(7000%) rotateZ(90deg);
+  }
+}
+@keyframes right-slide {
+  0% {
+    transform: translateY(-7000%) rotateZ(-90deg);
+  }
+  50% {
+    transform: translateY(0%) rotateZ(-90deg);
+  }
+  100% {
+    transform: translateY(-7000%) rotateZ(-90deg);
   }
 }
 
 body {
   height: 100vh;
   display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  grid-template-rows: 50px 1fr 50px;
+}
+
+.bar {
+  background-color: $green;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  .vertex {
+    width: 50px;
+    height: 50px;
+    background-color: $green;
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:first-child {
+      left: 0;
+    }
+    &:last-child {
+      right: 0;
+    }
+    > div {
+      width: 10px;
+      height: 10px;
+      background-color: black;
+    }
+  }
+  span {
+    font-weight: 600;
+    font-size: 18px;
+    position: absolute;
+    width: max-content;
+  }
+  &:first-child,
+  &:last-child {
+    grid-column: span 3;
+    position: relative;
+  }
+  &:first-child {
+    span {
+      animation: top-slide 20s linear infinite;
+    }
+  }
+  &:nth-child(2) {
+    span {
+      animation: left-slide 20s linear infinite;
+    }
+  }
+  &:nth-child(4) {
+    span {
+      animation: right-slide 20s linear infinite;
+    }
+  }
+  &:last-child {
+    span {
+      animation: bottom-slide 20s linear infinite;
+    }
+  }
+}
+
+main {
   background-color: black;
-  grid-template-rows: 10fr 10fr 45fr 35fr;
-  grid-template-columns: 0.3fr repeat(4, 1fr);
-  gap: $borderWidth;
-  div {
-    background-color: $bg;
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  height: calc(100vh - 100px);
+  > div {
+    background-color: $grey;
     overflow: hidden;
+    &:has(img) {
+      padding: 20px;
+    }
     img {
-      object-fit: cover;
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      border: 2px solid black;
     }
-    &:nth-child(11) {
-      grid-column: span 3;
+    &:nth-child(5) {
+      grid-column: span 2;
     }
-  }
-  .logo {
-    grid-area: span 2 / span 2;
-    font-size: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    &:nth-child(7) {
+      grid-column: span 2;
+      grid-row: span 4;
+    }
+    &:nth-child(8),
+    &:nth-child(13) {
+      grid-column: span 4;
+    }
+    &:nth-child(9),
+    &:nth-child(10),
+    &:nth-child(11),
+    &:nth-child(12),
+    &:nth-child(14) {
+      grid-column: span 2;
+    }
+    &:nth-child(10),
+    &:nth-child(11),
+    &:nth-child(12),
+    &:nth-child(13),
+    &:nth-child(14) {
+      grid-row: span 2;
+    }
+    &:nth-child(n + 7):nth-child(-n + 13) {
+      background-color: $lightGrey;
+    }
+    border-radius: 15px;
   }
   .title {
-    grid-column: span 3;
-    font-size: 66px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-  }
-  .banner {
     grid-row: span 2;
-    background-color: black;
+    grid-column: 1 / -1;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    position: relative;
-    span {
-      position: absolute;
-      width: max-content;
-      color: white;
-      font-size: 26px;
-      font-weight: 600;
-
-      animation: slide 5s linear infinite;
-    }
+    font-size: 200px;
+    font-weight: 900;
+    text-transform: uppercase;
   }
   .nav-btn {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    padding-left: 20px;
+    align-items: center;
+    font-weight: 700;
+    font-size: 22px;
+  }
+  .plan {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
     gap: 5px;
-    .nav-btn__name {
-      font-weight: 600;
-      font-size: 24px;
-    }
-    .nav-btn__desc {
-      font-size: 18px;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    & span:last-child {
+      font-size: 17px;
+      font-weight: 500;
+      color: #ababab;
     }
   }
   .post {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    &.post--big {
-      .post__title {
-        font-size: 200px;
+    justify-content: space-between;
+    padding: 10px;
+    .post__header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+    .post__footer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: space-between;
+      max-height: 60px;
+      h2 {
+        font-size: 20px;
+        font-weight: 800;
       }
-    }
-    .post__title {
-      font-size: 44px;
-      font-weight: 600;
-    }
-    p {
-      font-size: 22px;
+      p {
+        font-size: 12px;
+        line-height: 1.4;
+      }
     }
   }
-  .featured {
-    background-color: $accent;
-    padding: 15px;
+  .subs {
     display: flex;
-
-    div {
-      background-color: $bg;
-      border: $borderWidth solid black;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 15px 20px 15px;
+    .subs__title {
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .subs__input {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      h3 {
-        text-align: center;
-        font-size: 48px;
-        font-weight: 600;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      font-size: 12px;
+      align-items: flex-end;
+      span {
+        font-size: 22px;
+        font-weight: 800;
       }
+      border-bottom: 1px solid black;
+    }
+  }
+  .diagonal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    div {
+      width: 300px;
+      height: 2px;
+      background-color: black;
+      transform: rotate(26deg);
+      position: absolute;
     }
   }
 }
