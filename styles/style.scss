@@ -1,262 +1,63 @@
 @import "./reset.scss";
 
-$green: #01ff00;
-$grey: #d9d9d9;
-$lightGrey: #f0f0f0;
-
-@keyframes top-slide {
-  0% {
-    transform: translateX(-25%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-25%);
-  }
-}
-@keyframes bottom-slide {
-  0% {
-    transform: translateX(25%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(25%);
-  }
-}
-@keyframes left-slide {
-  0% {
-    transform: translateY(7000%) rotateZ(90deg);
-  }
-  50% {
-    transform: translateY(0%) rotateZ(90deg);
-  }
-  100% {
-    transform: translateY(7000%) rotateZ(90deg);
-  }
-}
-@keyframes right-slide {
-  0% {
-    transform: translateY(-7000%) rotateZ(-90deg);
-  }
-  50% {
-    transform: translateY(0%) rotateZ(-90deg);
-  }
-  100% {
-    transform: translateY(-7000%) rotateZ(-90deg);
-  }
-}
+$white: #dee1d6;
+$green: #5ebc44;
 
 body {
+  background-color: black;
   height: 100vh;
-  display: grid;
-  grid-template-columns: 50px 1fr 50px;
-  grid-template-rows: 50px 1fr 50px;
-}
-
-.bar {
-  background-color: $green;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  .vertex {
-    width: 50px;
-    height: 50px;
-    background-color: $green;
-    z-index: 999;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:first-child {
-      left: 0;
-    }
-    &:last-child {
-      right: 0;
-    }
-    > div {
-      width: 10px;
-      height: 10px;
-      background-color: black;
-    }
-  }
-  span {
-    font-weight: 600;
-    font-size: 18px;
-    position: absolute;
-    width: max-content;
-  }
-  &:first-child,
-  &:last-child {
-    grid-column: span 3;
-    position: relative;
-  }
-  &:first-child {
-    span {
-      animation: top-slide 20s linear infinite;
-    }
-  }
-  &:nth-child(2) {
-    span {
-      animation: left-slide 20s linear infinite;
-    }
-  }
-  &:nth-child(4) {
-    span {
-      animation: right-slide 20s linear infinite;
-    }
-  }
-  &:last-child {
-    span {
-      animation: bottom-slide 20s linear infinite;
-    }
-  }
 }
 
-main {
-  background-color: black;
+.poster {
+  background-color: $green;
+  width: 40%;
+  height: 100%;
   display: grid;
-  gap: 2px;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  height: calc(100vh - 100px);
-  > div {
-    background-color: $grey;
-    overflow: hidden;
-    &:has(img) {
-      padding: 20px;
-    }
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border: 2px solid black;
-    }
-    &:nth-child(5) {
-      grid-column: span 2;
-    }
-    &:nth-child(7) {
-      grid-column: span 2;
-      grid-row: span 4;
-    }
-    &:nth-child(8),
-    &:nth-child(13) {
-      grid-column: span 4;
-    }
-    &:nth-child(9),
-    &:nth-child(10),
-    &:nth-child(11),
-    &:nth-child(12),
-    &:nth-child(14) {
-      grid-column: span 2;
-    }
-    &:nth-child(10),
-    &:nth-child(11),
-    &:nth-child(12),
-    &:nth-child(13),
-    &:nth-child(14) {
-      grid-row: span 2;
-    }
-    &:nth-child(n + 7):nth-child(-n + 13) {
-      background-color: $lightGrey;
-    }
-    border-radius: 15px;
-  }
-  .title {
-    grid-row: span 2;
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 200px;
-    font-weight: 900;
-    text-transform: uppercase;
-  }
-  .nav-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    font-size: 22px;
-  }
-  .plan {
-    display: flex;
-    justify-content: flex-start;
-    padding: 10px;
-    gap: 5px;
-    align-items: center;
-    font-weight: 700;
-    font-size: 20px;
-    text-align: center;
-    & span:last-child {
-      font-size: 17px;
-      font-weight: 500;
-      color: #ababab;
-    }
-  }
-  .post {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-    .post__header {
+  grid-template-rows: minmax(0, 30fr) 70fr;
+  .top {
+    display: grid;
+    padding: 40px;
+    row-gap: 30px;
+    grid-template-columns: 75fr 25fr;
+    .top__box {
       display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-    }
-    .post__footer {
-      display: flex;
+      gap: 5px;
       flex-direction: column;
-      gap: 10px;
-      justify-content: space-between;
-      max-height: 60px;
-      h2 {
-        font-size: 20px;
-        font-weight: 800;
-      }
-      p {
-        font-size: 12px;
-        line-height: 1.4;
-      }
-    }
-  }
-  .subs {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 30px 15px 20px 15px;
-    .subs__title {
-      font-size: 22px;
-      font-weight: 800;
-    }
-    .subs__input {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 5px;
+      font-weight: 600;
       font-size: 12px;
-      align-items: flex-end;
-      span {
-        font-size: 22px;
-        font-weight: 800;
+      &:last-child {
+        color: white;
+        font-size: 15px;
+        align-self: center;
       }
-      border-bottom: 1px solid black;
+      h1 {
+        font-size: 65px;
+      }
     }
   }
-  .diagonal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    div {
-      width: 300px;
-      height: 2px;
+  .bottom {
+    overflow: hidden;
+    .circles {
+      transform: scale(1.1);
       background-color: black;
-      transform: rotate(26deg);
-      position: absolute;
+      display: grid;
+      gap: 10px;
+      height: 100%;
+      grid-template: repeat(11, 1fr) / repeat(11, 1fr);
+      .circle {
+        background-color: $green;
+        border-radius: 50%;
+        @for $i from 1 through 9 {
+          @for $j from (11 * $i)+2 through (11 * $i) +1 + $i {
+            &:nth-child(#{$j}) {
+              background-color: $white;
+            }
+          }
+        }
+      }
     }
   }
 }
